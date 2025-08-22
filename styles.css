@@ -1,0 +1,116 @@
+:root{
+    --bg: #0b0d12;
+    --card: #151923;
+    --text: #e8ecf1;
+    --muted: #a7b1c2;
+    --accent-hobbes: #ff6a3d;
+    --accent-locke: #2fd1a6;
+    --accent-rousseau: #6e8bff;
+    --line: #2b3350;
+    --chip: #70573e;
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+  }
+  
+  *{box-sizing:border-box}
+  html,body{height:100%; margin:0; padding:0}
+  body{
+    font-family: Poppins, system-ui, sans-serif;
+    color:var(--text);
+    background: var(--bg);
+    line-height:1.6;
+  }
+  
+  /* ========== HEADER ========= */
+  .site-header{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(8px);
+    background: rgba(11,15,26,.85);
+    border-bottom: 1px solid rgba(255,255,255,.05);
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 0;
+  }
+  .brand{font-size: clamp(18px, 2vw, 26px); margin:0; font-weight:800}
+  .nav{
+    display:flex; gap:14px;
+  }
+  .nav a{
+    color:var(--text); text-decoration:none;
+    font-weight:600; font-size:15px;
+    padding:8px 12px; border-radius:999px;
+    background:rgba(255,255,255,.06);
+    transition: background .2s ease;
+  }
+  .nav a:hover{background:rgba(255,255,255,.15)}
+  
+  /* ========== HERO ========= */
+  .hero{padding:72px 0 40px; text-align:center}
+  .hero h2{font-family: Merriweather, serif; font-size:clamp(26px, 5vw, 44px); margin:0 0 12px}
+  .hero p{max-width:720px; margin:0 auto 20px; color:var(--muted)}
+  .hero-tags{display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
+  .tag{padding:8px 14px; border-radius:999px; background:var(--chip); border:1px solid rgba(255,255,255,.08); font-weight:600; font-size:14px}
+  .t1{border-color: var(--accent-hobbes)}
+  .t2{border-color: var(--accent-locke)}
+  .t3{border-color: var(--accent-rousseau)}
+  
+  /* ========== GRID ========= */
+  .container{width:min(1200px,92%); margin:0 auto}
+  .grid{display:grid; grid-template-columns: 380px 1fr; gap:36px; align-items:start}
+  
+  /* Autor card */
+  .author-card{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px; box-shadow: var(--shadow);
+    padding:16px;
+  }
+  .portrait{
+    width:100%; height:400px; object-fit:cover; border-radius:16px;
+  }
+  .author-info h3{margin:12px 0 6px; font-size:24px}
+  .author-info h3 span{font-weight:500; color:var(--muted)}
+  .chips{display:flex; gap:8px; flex-wrap:wrap; list-style:none; padding:0; margin:8px 0 0}
+  .chips li{background:var(--chip); border:1px solid rgba(255,255,255,.08); padding:6px 10px; border-radius:999px; font-size:13px; font-weight:600}
+  
+  /* Timeline */
+  .timeline{position:relative; padding-left:40px; margin-top:12px}
+  .timeline::before{
+    content:""; position:absolute; left:16px; top:0; bottom:0; width:2px; background:var(--line);
+  }
+  .tl-item{margin:0 0 26px; opacity:0; transform:translateY(14px); transition:.6s}
+  .tl-item.visible{opacity:1; transform:none}
+  .dot{
+    position:absolute; left:-26px; top:6px; width:14px; height:14px; border-radius:50%
+  }
+  .accent-hobbes .dot{background:var(--accent-hobbes)}
+  .accent-locke .dot{background:var(--accent-locke)}
+  .accent-rousseau .dot{background:var(--accent-rousseau)}
+  .tl-item .content{background:rgba(255,255,255,.05); padding:14px 16px; border-radius:14px; border:1px solid rgba(255,255,255,.1)}
+  .tl-item h4{margin:0 0 6px; font-size:18px}
+  .tl-item p{margin:0; font-size:15px; color:var(--muted)}
+  
+  /* Footer */
+  .site-footer{padding:30px 0; text-align:center; font-size:14px; color:var(--muted)}
+  
+  /*RESPONSIVIDADE*/
+  @media (max-width: 768px){
+    .grid{grid-template-columns: 1fr; gap:20px}
+    .portrait{height:300px}
+    .author-info h3{font-size:20px}
+    .chips li{font-size:12px}
+    .timeline{padding-left:22px}
+    .timeline::before{left:8px}
+    .dot{left:-18px; width:12px; height:12px}
+  }
+  
+  @media (max-width: 600px){
+    /* Menu vira hamburguer */
+    .nav{display:none; flex-direction:column; gap:12px; position:absolute; top:60px; right:10px; background:#1a2236; padding:14px; border-radius:12px}
+    .nav.show{display:flex}
+    .menu-btn{display:block; cursor:pointer; border:none; background:none; color:var(--text); font-size:24px}
+  }
+  @media (min-width:601px){
+    .menu-btn{display:none}
+  }
+  
